@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>谢懿Shine</title><description>Blog</description><link>https://fuxieyi.github.io/</link><language>en</language><item><title>我的第一篇博客</title><link>https://fuxieyi.github.io/posts/1firstblog/my-firstblog/</link><guid isPermaLink="true">https://fuxieyi.github.io/posts/1firstblog/my-firstblog/</guid><pubDate>Sat, 10 May 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;互联网游民的栖息地哈哈&lt;/h1&gt;
+&lt;p&gt;&amp;lt;iframe width=&quot;100%&quot; height=&quot;468&quot; src=&quot;//player.bilibili.com/player.html?isOutside=true&amp;amp;aid=113286691425094&amp;amp;bvid=BV1WQ21YZEAJ&amp;amp;cid=26237469421&amp;amp;p=1&quot; scrolling=&quot;no&quot; border=&quot;0&quot; frameborder=&quot;no&quot; framespacing=&quot;0&quot; allowfullscreen=&quot;true&quot;&amp;gt;&amp;lt;/iframe&amp;gt;&lt;/p&gt;
+</content:encoded></item><item><title>Shine博客的从零开始</title><link>https://fuxieyi.github.io/posts/1firstblog/about-myblog/</link><guid isPermaLink="true">https://fuxieyi.github.io/posts/1firstblog/about-myblog/</guid><pubDate>Sat, 10 May 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;🖥️我的增添修改&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;更改根目录下的 astro.config.mjs&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;更改站点url site：&quot;https://fuxieyi.github.io/&quot;,&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;注意,若不删除biome.yaml，在移动端显示会有bug&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;媒体资源都放在public文件夹下&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;docs文件夹存放文章模版和readme&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;build.yml 也可以删除，原因如下：&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;build.yml 中的构建功能已经包含在 astro_auto_deploy.yml 中&lt;/li&gt;
+&lt;li&gt;Node.js 版本问题
+build.yml 使用了 Node.js 22 和 23 版本
+这些版本太新，可能不稳定
+而 astro_auto_deploy.yml 使用的是更稳定的 Node.js 20&lt;/li&gt;
+&lt;li&gt;对于个人博客项目，不需要这么复杂的构建检查
+保留一个部署工作流就足够了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;一定注意每个文章的lang不设置,不然搜索不到啊啊啊啊啊啊啊&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;主页显示内容条数的配置，它在 export const PAGE_SIZE = 8&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Markdown可拓展写法&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;显示github链接
+::github{repo=&quot;FuXieyi/FuXieyi&quot;}&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;文字带链接
+&lt;a href=&quot;https://fuxieyi.github.io/&quot;&gt;Shine Blog&lt;/a&gt; is also supported.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[Shine Blog](https://fuxieyi.github.io/) is also supported.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;文章插入图片&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;第一种&lt;pre&gt;&lt;code&gt;你好![](.\favicon.png)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;第二种(文字点进去是图片)&lt;pre&gt;&lt;code&gt;[你好](.\favicon.png)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;文章插入视频&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;iframe width=&quot;100%&quot; height=&quot;468&quot; src=&quot;//player.bilibili.com/player.html?bvid=BV1fK4y1s7Qf&amp;amp;p=1&quot; scrolling=&quot;no&quot; border=&quot;0&quot; frameborder=&quot;no&quot; framespacing=&quot;0&quot; allowfullscreen=&quot;true&quot;&amp;gt; &amp;lt;/iframe&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;note tip important warning caution&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;:::note
+ 你好
+ :::
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;:::tip
+ 你好
+ :::
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;MY CUSTOM TITLE&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;:::note[MY CUSTOM TITLE]
+This is a note with a custom title.
+:::
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The GitHub syntax is also supported&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; [!NOTE]
+&amp;gt; The GitHub syntax is also supported.
+
+&amp;gt; [!TIP]
+&amp;gt; The GitHub syntax is also supported.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;代码部分显示，折叠剩余部分&lt;/p&gt;
+&lt;p&gt;先显示部分代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;name: astro_auto_deploy
+on:
+  push:
+    branches:
+      - main
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;lt;details&amp;gt;
+&amp;lt;summary&amp;gt;查看完整代码...&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;name: astro_auto_deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      # 更多配置...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;实现方式：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;先显示部分代码：
+```yaml
+name: astro_auto_deploy
+on:
+  push:
+    branches:
+      - main
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;lt;details&amp;gt;
+&amp;lt;summary&amp;gt;查看完整代码...&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;name: astro_auto_deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    # 更多配置...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;🍥可修改的基本信息&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;在根目录下的 src 文件夹中，你可以找到 config.ts 我们来开始改写&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;title：你的博客主标题&lt;/li&gt;
+&lt;li&gt;subtitle：你的博客副标题。可选，在首页会显示为&quot;主标题 - 副标题&quot;&lt;/li&gt;
+&lt;li&gt;lang：博客显示语言。注释已经列出了一些常用的值，如：en, zh_CN, zh_TW, ja, ko&lt;/li&gt;
+&lt;li&gt;themeColor：hue值则是你的博客主题色，可以在你的博客右上角的画板图标确定喜欢的颜色再填写&lt;/li&gt;
+&lt;li&gt;banner：src：即banner图片，支持http/https URL&lt;/li&gt;
+&lt;li&gt;favicon：src：即网站图标，支持http/https URL&lt;/li&gt;
+&lt;li&gt;links：即友情链接，这些链接在导航栏上&lt;/li&gt;
+&lt;li&gt;avatar：即你的头像&lt;/li&gt;
+&lt;li&gt;name：即你的名字&lt;/li&gt;
+&lt;li&gt;bio：即个性签名，会显示在头像和名字下面&lt;/li&gt;
+&lt;li&gt;NavBarConfig 为导航栏设置的超链接。ProfileConfig 为你的用户的超链接&lt;/li&gt;
+&lt;li&gt;icon：你需要前往icones.js去搜索你想要的图标，比如QQ，则填写 fa6-brands:qq ，&lt;/li&gt;
+&lt;li&gt;Fuwari默认支持这几种类型：fa6-brands, fa6-regular, fa6-solid, material-symbols。可以自己导入喜欢的图片相关配置内容。&lt;br /&gt;
+&amp;lt;br&amp;gt; &lt;strong&gt;例如（在项目根目录下）&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;pnpm add -D @iconify-json/material-symbols
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;✨ 功能特性&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;[x] 基于 Astro 和 Tailwind CSS 开发&lt;/li&gt;
+&lt;li&gt;[x] 流畅的动画和页面过渡&lt;/li&gt;
+&lt;li&gt;[x] 亮色 / 暗色模式&lt;/li&gt;
+&lt;li&gt;[x] 自定义主题色和横幅图片&lt;/li&gt;
+&lt;li&gt;[x] 响应式设计&lt;/li&gt;
+&lt;li&gt;[ ] 评论&lt;/li&gt;
+&lt;li&gt;[x] 搜索&lt;/li&gt;
+&lt;li&gt;[ ] 文内目录&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;🚀相关环境依赖构建(在windwos下的开发调试)&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://git-scm.com/downloads&quot;&gt;下载Git&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://nodejs.org/en&quot;&gt;Node.js&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过Node.js在windwos环境下安装pnpm&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;npm install -g pnpm&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在博客根目录下安装其所需依赖&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;pnpm install&lt;/li&gt;
+&lt;li&gt;pnpm add sharp&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;默认情况下，npm 和 pnpm 的全局依赖会安装在 C:\Users\你的用户名\AppData\Roaming\npm，我们可以修改到 D盘。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;ol&gt;
+&lt;li&gt;npm config set prefix &quot;D:\npm-global&quot;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;验证npm config get prefix  # 应该返回 D:\npm-global&lt;/li&gt;
+&lt;li&gt;
+&lt;ol&gt;
+&lt;li&gt;pnpm config set store-dir &quot;D:.pnpm-store&quot;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;验证pnpm config set store-dir &quot;D:.pnpm-store&quot;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在博客项目根目录下根据其要求安装相关依赖&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;pnpm install&lt;/li&gt;
+&lt;li&gt;pnpm add sharp、&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;至此，完成部署落地&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;🚀创建两个仓库来管理博客（方便自动化部署）&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;astro框架会生成dist文件夹，用来存放相关静态网页，所以我们可以将项目拆开两个部分（dist文件夹单独用来部署网页）&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;新建一私有仓库 MyBlog-Main-astro&lt;/li&gt;
+&lt;li&gt;新建用来挂载部署github.io的公共仓库 FuXieyi.github.io （仓库名要与github用户名一样哦）&lt;/li&gt;
+&lt;li&gt;设置TOKEN，用来自动部署
+&lt;ul&gt;
+&lt;li&gt;github设置--开发者设置--个人访问令牌--生成新令牌（经典）&lt;/li&gt;
+&lt;li&gt;转至私有仓库MyBlog-Main-astro设置--机密与变量--操作--新建仓库机密（将TOKEN粘贴进去）命名为TOKEN&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;初始化本地仓库后推送至私有仓库MyBlog-Main-astro
+&lt;ul&gt;
+&lt;li&gt;设置.gitignore，添加dist（这个后面自动化部署推动到公共仓库FuXieyi.github.io）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;.github\workflows下创建一个自动化部署脚本astro_auto_deploy.yaml&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;name: astro_auto_deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: &apos;20&apos;
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: false
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build site
+        run: pnpm build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          PERSONAL_TOKEN: ${{ secrets.TOKEN }}
+          EXTERNAL_REPOSITORY: FuXieyi/FuXieyi.github.io
+          PUBLISH_BRANCH: main
+          PUBLISH_DIR: ./dist
+          force_orphan: true 
+          commit_message: auto deploy
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;对于私有仓库的自动依赖更新，构建dependency-update.yaml&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;name: Dependency Update Check
+
+on:
+  schedule:
+    - cron: &apos;0 0 * * 0&apos;  # 每周日运行
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  check-updates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: &apos;20&apos;
+          
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          
+      - name: Check for outdated dependencies
+        run: |
+          pnpm install
+          pnpm outdated
+          
+      - name: Check for security vulnerabilities
+        run: pnpm audit 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;在 package.json 中添加一些有用的脚本：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;-     &quot;preinstall&quot;: &quot;npx only-allow pnpm&quot;（删除这一行）
++     &quot;preinstall&quot;: &quot;npx only-allow pnpm&quot;,
++     &quot;check-updates&quot;: &quot;pnpm outdated&quot;,
++     &quot;check-security&quot;: &quot;pnpm audit&quot;,
++     &quot;update-deps&quot;: &quot;pnpm update --latest&quot;,
++     &quot;update-interactive&quot;: &quot;pnpm update -i&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;现在你可以使用以下命令来管理依赖：&lt;/li&gt;
+&lt;li&gt;检查更新
+pnpm check-updates    # 检查过时的依赖
+pnpm check-security   # 检查安全漏洞&lt;/li&gt;
+&lt;li&gt;更新依赖
+pnpm update-deps      # 更新所有依赖到最新版本
+pnpm update-interactive  # 交互式更新依赖&lt;/li&gt;
+&lt;li&gt;自动检查
+我添加的 GitHub Actions 工作流会每周自动检查依赖更新
+你也可以在 GitHub 仓库的 Actions 标签页手动触发检查&lt;/li&gt;
+&lt;li&gt;使用建议：
+定期运行 pnpm check-updates 和 pnpm check-security 检查更新
+使用 pnpm update-interactive 进行交互式更新，这样可以更好地控制更新过程
+更新后记得测试项目，确保一切正常运行&lt;/li&gt;
+&lt;li&gt;这样的设置虽然没有 Dependabot 那么自动化，但对于私有仓库来说是一个很好的替代方案。你可以根据需要调整 GitHub Actions 的运行频率（目前设置为每周日）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;⚙️ 文章 Frontmatter&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;---
+title: My First Blog Post
+published: 2023-09-09
+description: This is the first post of my new Astro blog.
+image: ./cover.jpg
+tags: [Foo, Bar]
+category: Front-end
+draft: false
+lang: zh_CN      # 仅当文章语言与 `config.ts` 中的网站语言不同时需要设置
+---
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;🧞 指令&lt;/h2&gt;
+&lt;p&gt;下列指令均需要在项目根目录执行：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Command&lt;/th&gt;
+&lt;th&gt;Action&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;pnpm install&lt;/code&gt; 并 &lt;code&gt;pnpm add sharp&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;安装依赖&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;pnpm dev&lt;/code&gt;/&lt;code&gt;npm run dev&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;在 &lt;code&gt;localhost:4321&lt;/code&gt; 启动本地开发服务器&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;pnpm build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;构建网站至 &lt;code&gt;./dist/&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;pnpm preview&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;本地预览已构建的网站&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;pnpm new-post &amp;lt;filename&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;创建新文章&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;pnpm astro ...&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;执行 &lt;code&gt;astro add&lt;/code&gt;, &lt;code&gt;astro check&lt;/code&gt; 等指令&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;pnpm astro --help&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;显示 Astro CLI 帮助&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content:encoded></item></channel></rss>
