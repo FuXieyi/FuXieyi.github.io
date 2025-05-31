@@ -1,0 +1,1037 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>谢懿Shine</title><description>Blog</description><link>https://fuxieyi.github.io/</link><language>zh_CN</language><item><title>对fuwari博客的完善</title><link>https://fuxieyi.github.io/posts/%E5%AF%B9fuwari%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%AE%8C%E5%96%84/</link><guid isPermaLink="true">https://fuxieyi.github.io/posts/%E5%AF%B9fuwari%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%AE%8C%E5%96%84/</guid><description>记录fuwari博客的一些增添修改与bug发现</description><pubDate>Fri, 30 May 2025 00:00:00 GMT</pubDate><content:encoded>&lt;ol&gt;
+&lt;li&gt;tags和category有严格的书写规范&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;不能有空格,不能使用&amp;amp;&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded></item><item><title>Cloudflare进阶技巧之几个设置让网站速度翻倍(持续更新学习)</title><link>https://fuxieyi.github.io/posts/cloudflare%E8%BF%9B%E9%98%B6%E6%8A%80%E5%B7%A7%E4%B9%8B%E5%87%A0%E4%B8%AA%E8%AE%BE%E7%BD%AE%E8%AE%A9%E7%BD%91%E7%AB%99%E9%80%9F%E5%BA%A6%E7%BF%BB%E5%80%8D/</link><guid isPermaLink="true">https://fuxieyi.github.io/posts/cloudflare%E8%BF%9B%E9%98%B6%E6%8A%80%E5%B7%A7%E4%B9%8B%E5%87%A0%E4%B8%AA%E8%AE%BE%E7%BD%AE%E8%AE%A9%E7%BD%91%E7%AB%99%E9%80%9F%E5%BA%A6%E7%BF%BB%E5%80%8D/</guid><description>一般来说，我们使用Cloudflare最常用的就是配置域名DNS，但实际上Cloudflare提供了许多强大的功能，可以显著提升网站的性能和用户体验。分享一些在配置完DNS之后的几个简单的优化设置，这些设置往往被很多站长所忽略，但有时候却带来显著的效果提升。</description><pubDate>Thu, 15 May 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;(1)开启所有可用的性能优化&lt;/h2&gt;
+&lt;p&gt;在Cloudflare的Speed页面中，有许多性能优化选项需要我们注意。建议开启以下功能：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Auto Minify：自动压缩JavaScript、CSS和HTML代码&lt;/li&gt;
+&lt;li&gt;Rocket Loader：优化JavaScript加载性能&lt;/li&gt;
+&lt;li&gt;Early Hints：提前加载资源，加快页面渲染&lt;/li&gt;
+&lt;li&gt;HTTP/3 (QUIC)：启用最新的传输协议&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;嫌麻烦的话，下图所示，直接点击 cloudfare 的 启用所有可用配置:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.246612.xyz/content/2025/05/PixPin_2025-05-30_15-01-36.png&quot; alt=&quot;PixPin_2025-05-30_15-01-36&quot; /&gt;&lt;/p&gt;
+&lt;h2&gt;(2)配置Crawl Hints&lt;/h2&gt;
+&lt;p&gt;搜索引擎爬虫对网站的抓取效率直接影响着SEO效果。在Cloudflare的Caching设置中，开启Crawl Hints可以：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;指导搜索引擎更高效地抓取网站内容&lt;/li&gt;
+&lt;li&gt;避免无用页面的重复抓取&lt;/li&gt;
+&lt;li&gt;优化爬虫预算的使用&lt;/li&gt;
+&lt;li&gt;这个功能特别适合内容经常更新的网站，可以帮助搜索引擎更快发现和收录新内容。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.246612.xyz/content/2025/05/PixPin_2025-05-30_15-03-22.png&quot; alt=&quot;PixPin_2025-05-30_15-03-22&quot; /&gt;&lt;/p&gt;
+&lt;h2&gt;(3)启用Always Online功能&lt;/h2&gt;
+&lt;p&gt;网站服务器偶尔会遇到宕机，Always Online是一个非常实用的功能：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;当源站服务器出现故障时，可以展示网页的缓存版本&lt;/li&gt;
+&lt;li&gt;保持基本的用户访问体验&lt;/li&gt;
+&lt;li&gt;减少因服务器故障带来的用户流失&lt;/li&gt;
+&lt;li&gt;建议所有网站都开启这个功能，它就像给网站上了一份&quot;保险&quot;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.246612.xyz/content/2025/05/PixPin_2025-05-30_15-04-09.png&quot; alt=&quot;PixPin_2025-05-30_15-04-09&quot; /&gt;&lt;/p&gt;
+&lt;h2&gt;(4)开启Smart Cache&lt;/h2&gt;
+&lt;p&gt;Smart Cache是Cloudflare的智能缓存系统，它可以：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;自动识别可缓存的内容&lt;/li&gt;
+&lt;li&gt;优化缓存策略&lt;/li&gt;
+&lt;li&gt;减少源站服务器负载&lt;/li&gt;
+&lt;li&gt;提供更快的响应速度&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.246612.xyz/content/2025/05/PixPin_2025-05-30_15-05-09.png&quot; alt=&quot;PixPin_2025-05-30_15-05-09&quot; /&gt;&lt;/p&gt;
+&lt;h2&gt;(5)配置Cache Rules&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;可以跳转我另一篇文章 &lt;a&gt;Cloudflare进阶技巧之CDN 最佳实践：设定、缓存与效能提升(持续更新学习)&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;针对性地配置缓存规则。当然，这个优化需要写cache rule, 如果是非程序员建议等网站起飞之后再去研究。 cache rule的一些建议：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;对静态资源（图片、CSS、JS等）设置较长的缓存时间&lt;/li&gt;
+&lt;li&gt;对经常变动的页面设置较短的缓存时间或不缓存&lt;/li&gt;
+&lt;li&gt;使用Cache Everything规则最大化缓存效果&lt;/li&gt;
+&lt;li&gt;针对不同的URL路径设置不同的缓存策略&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;参考链接&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;https://dev-life.online/blog/cloudfare_config&lt;/p&gt;
+&lt;/blockquote&gt;
+</content:encoded></item><item><title>Cloudflare进阶技巧之CDN 最佳实践：设定、缓存与效能提升(持续更新学习)</title><link>https://fuxieyi.github.io/posts/cloudflare%E8%BF%9B%E9%98%B6%E6%8A%80%E5%B7%A7%E4%B9%8Bcdn-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E8%AE%BE%E5%AE%9A%E7%BC%93%E5%AD%98%E4%B8%8E%E6%95%88%E8%83%BD%E6%8F%90%E5%8D%87/</link><guid isPermaLink="true">https://fuxieyi.github.io/posts/cloudflare%E8%BF%9B%E9%98%B6%E6%8A%80%E5%B7%A7%E4%B9%8Bcdn-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E8%AE%BE%E5%AE%9A%E7%BC%93%E5%AD%98%E4%B8%8E%E6%95%88%E8%83%BD%E6%8F%90%E5%8D%87/</guid><description>CDN最大的特色，我想就是它的缓存功能，达到防攻击，减轻源服务器的压力。着重聊一聊cloudflare的缓存功能，你还在使用默认的缓存配置？</description><pubDate>Thu, 15 May 2025 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;Cloudflare 的内容分发网络(CDN) 是现代网站优化的核心武器，但许多网站所有者仅使用了其基本功能，完全没有发挥其全部潜力。根据实际统计，正确设置的 Cloudflare CDN 可以将网站加载时间减少高达 50-70%，大幅提升用户留存率和转换率。本文将深入探讨如何完全释放 Cloudflare CDN 的强大性能，确保所有内容得到最佳缓存，并为您的访客提供闪电般的体验。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;(1)了解 Cloudflare CDN 的核心原理&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Cloudflare CDN 本质上是一个内容分发网络和反向代理云提供商，拥有遍布全球的服务器网络。 当用户访问您的网站时，Cloudflare 会拦截请求并从最近的服务器提供缓存内容，大幅减少延迟时间。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Cloudflare 的全球网络涵盖 335 个据点，能够将内容尽可能靠近您的最终用户-约 95%的网络连接人口都能在约 50 毫秒内得到响应。 这种广泛的全球网络使 Cloudflare 能够在保持最高性能和弹性的同时，以最大规模交付静态和动态内容。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;(2)解决 Cloudflare 默认缓存的限制&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;很多网站管理员不知道的是，Cloudflare 默认的缓存行为有严格限制：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Cloudflare 仅根据文件扩展名缓存，而不是按 MIME 类型&lt;/li&gt;
+&lt;li&gt;默认情况下不会缓存 HTML 或 JSON 文件&lt;/li&gt;
+&lt;li&gt;许多网站管理员发现大部分资源被标记为「动态」，因此不被缓存&lt;/li&gt;
+&lt;li&gt;这就是为什么许多用户在使用 Cloudflare 时，发现大约只有 0.02%的内容实际被 Cloudflare 缓存并服务。 如果不进行适当设置，您实际上可能完全没有利用到 CDN 的主要优势。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;(3) 节点选择&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;针对中国用户，选择最快的 Cloudflare 节点，例如移动（172.64.32.1/24，香港）、电信（104.16.160.1/24，洛杉矶）、联通（108.162.236.1/24，美国）。&lt;/li&gt;
+&lt;li&gt;可通过 Cloudflare Partner（如 BNXB， &lt;a href=&quot;https://cdn.bnxb.com/&quot;&gt;https://cdn.bnxb.com/&lt;/a&gt; ）使用 CNAME 解析自定义节点。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;(4)启用「Cache Everything」设置的关键步骤&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;要最大化 Cloudflare 的缓存潜力，必须启用「Cache Everything」功能。这有两种方法&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;#通过页面规则设置&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;登入 Cloudflare 仪表板并选择您的域名&lt;/li&gt;
+&lt;li&gt;点击左侧的「Rules」&lt;/li&gt;
+&lt;li&gt;选择「页面规则」&lt;/li&gt;
+&lt;li&gt;点击「创建页面规则」&lt;/li&gt;
+&lt;li&gt;在 URL 匹配模式中输入： &lt;code&gt;*yourdomain.com/*&lt;/code&gt; （替换为您的域名）&lt;/li&gt;
+&lt;li&gt;在设置中选择「Cache Level」并将其设为「Cache Everything」&lt;/li&gt;
+&lt;li&gt;点击「保存并部署页面规则」&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;#通过 Cache Rules 设置（推荐方法）&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;前往 Cloudflare 仪表板选择您的域名&lt;/li&gt;
+&lt;li&gt;点击「Caching」选项卡&lt;/li&gt;
+&lt;li&gt;选择「Cache Rules」子页面&lt;/li&gt;
+&lt;li&gt;创建新规则，条件设为「All incoming requests」&lt;/li&gt;
+&lt;li&gt;在「则...」部分，将「缓存资格」设为「符合缓存条件」&lt;/li&gt;
+&lt;li&gt;将「边缘 TTL」设为「如果存在，使用缓存控制标头，如果不存在，使用 Cloudflare 的默认 TTL 缓存请求来获取响应状态」&lt;/li&gt;
+&lt;li&gt;储存设置&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;(5)优化缓存控制头部设置&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;为确保最佳缓存效果，您需要正确设置 Cache-Control 头部并确保 Cloudflare 尊重这些头部：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;前往 Cloudflare 仪表板的「缓存」&amp;gt;「配置」&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将「浏览器缓存 TTL」设为「尊重现有标头」&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;禁用「Always Online™」（如果已启用）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在您的源伺服器上，应根据资源类型设置不同的缓存头部：这种设置可以确保静态资源被长时间缓存，而动态内容始终保持最新&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;资源类型&lt;/th&gt;
+&lt;th&gt;建议的 Cache-Control 头部&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;静态版本化资源（如 CSS、JS）&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;public, max-age=31536000, immutable&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;动态资源（如 HTML 页面）&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;cache-control: max-age=0,must-revalidate,public&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;这种设置可以确保静态资源被长时间缓存，而动态内容始终保持最新。&lt;/p&gt;
+&lt;h2&gt;(6) 启用高级性能协议&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Cloudflare 提供多种协议优化选项，可以显著提升网站性能：&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;HTTP/2 和 HTTP/3 启用步骤&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;登入 Cloudflare 仪表板&lt;/li&gt;
+&lt;li&gt;导航至「速度」&amp;gt;「优化」&lt;/li&gt;
+&lt;li&gt;在「Protocol Optimization」部分，启用以下选项：
+&lt;ul&gt;
+&lt;li&gt;HTTP/2 和 HTTP/3（使用 QUIC）&lt;/li&gt;
+&lt;li&gt;HTTP/2 到原点&lt;/li&gt;
+&lt;li&gt;0-RTT 连接恢复&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这些协议优化可以减少延迟，提高资源利用率，并加快加载时间。特别是同时启用 HTTP/2、HTTP/3 和 0-RTT Connection Resumption 的组合效果最佳。&lt;/p&gt;
+&lt;h2&gt;(7)内容优化设置&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Cloudflare 提供多种内容优化工具，可以进一步加速网站：&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;关键内容优化选项&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;优化选项&lt;/th&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;th&gt;建议设置&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Cloudflare Fonts&lt;/td&gt;
+&lt;td&gt;在 Cloudflare 伺服器上缓存常用网络字体&lt;/td&gt;
+&lt;td&gt;开启&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Early Hints&lt;/td&gt;
+&lt;td&gt;向浏览器发送有关即将到来的资源的初步提示&lt;/td&gt;
+&lt;td&gt;开启&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Rocket Loader™&lt;/td&gt;
+&lt;td&gt;优化 JavaScript 加载方式&lt;/td&gt;
+&lt;td&gt;开启&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Mirage&lt;/td&gt;
+&lt;td&gt;根据访问者的设备和网络状况优化图像加载&lt;/td&gt;
+&lt;td&gt;开启&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Minify&lt;/td&gt;
+&lt;td&gt;压缩的 HTML、CSS 和 JavaScript&lt;/td&gt;
+&lt;td&gt;开启所有&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;(8)缓存大小限制和优化策略&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;了解 Cloudflare 对不同计划的缓存限制也很重要：&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;各计划的缓存限制&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;计划类型&lt;/th&gt;
+&lt;th&gt;最大上传大小&lt;/th&gt;
+&lt;th&gt;可缓存文件限制&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Free&lt;/td&gt;
+&lt;td&gt;100 MB&lt;/td&gt;
+&lt;td&gt;512 MB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Pro&lt;/td&gt;
+&lt;td&gt;100 MB&lt;/td&gt;
+&lt;td&gt;512 MB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Business&lt;/td&gt;
+&lt;td&gt;200 MB&lt;/td&gt;
+&lt;td&gt;512 MB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Enterprise&lt;/td&gt;
+&lt;td&gt;500+ MB&lt;/td&gt;
+&lt;td&gt;5 GB（可请求增加）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;对于超过限制的文件，可以通过分组请求或使用非代理 DNS 记录上传完整资源。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;(9)安全性与性能的平衡&lt;/h2&gt;
+&lt;h3&gt;安全与性能并重的设置&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;设置速率限制规则防止攻击，例如：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;URL: /*
+Action: Rate-limit
+Requests: 100 per minute
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;限制源伺服器只允许来自 Cloudflare IP 范围的流量&lt;/li&gt;
+&lt;li&gt;考虑使用 Cloudflare Tunnels 完全不暴露任何入站端口&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;(10)监控与优化缓存效果&lt;/h2&gt;
+&lt;h3&gt;设置完成后，持续监控和优化缓存效果至关重要&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;使用 Chrome 开发者工具检查响应头中的「cf-cache-status」。 「HIT」表示资源已被缓存&lt;/li&gt;
+&lt;li&gt;考虑使用 Dr. Flare 等 Chrome 扩展分析网站，了解有多少内容来自 Cloudflare 缓存&lt;/li&gt;
+&lt;li&gt;定期检查 Cloudflare 分析，了解缓存命中率和性能指标&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;还有更多的优化攻略(持续更新)&lt;/h2&gt;
+&lt;h2&gt;相关参考学习链接&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://tenten.co/learning/cloudflare-cdn-cache-tips/&quot;&gt;Cloudflare CDN 最佳實踐：設定、緩存與效能提升&lt;/a&gt;&lt;/p&gt;
+</content:encoded></item><item><title>Markdown编辑器之Typora</title><link>https://fuxieyi.github.io/posts/markdown%E7%BC%96%E8%BE%91%E5%99%A8%E4%B9%8Btypora/</link><guid isPermaLink="true">https://fuxieyi.github.io/posts/markdown%E7%BC%96%E8%BE%91%E5%99%A8%E4%B9%8Btypora/</guid><description>Typora软件及强大的插件使用</description><pubDate>Wed, 14 May 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;软件及插件下载&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://pan.baidu.com/s/1qUV6qGc6FJvMzdbxeegrRA?pwd=urbm&quot;&gt;Typora软件&lt;/a&gt;(我的网盘分享直接下载使用)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;我的是1.95版本,更新的破解版本好像有bug?&lt;/li&gt;
+&lt;li&gt;对Typora&lt;a href=&quot;https://linux.do/t/topic/655901&quot;&gt;破解的讨论&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;两个强大的插件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/obgnail/typora_plugin&quot;&gt;typora_plugin&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/typora-community-plugin/typora-community-plugin&quot;&gt;typora-community-plugin&lt;/a&gt;(还没有使用过)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;Typora编辑器的使用学习（持续更新）&lt;/h1&gt;
+&lt;h2&gt;(1)关于自动编号&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在使用 typora 的时候，没有自动编号，每一级标题要手动编号，比较累。之前有找过修改主题的 CSS 以及下面的插件来实现自动编号的，但是只是个样式而已，没有真正的编号。冲浪发现有使用脚本进行编写的。&lt;a href=&quot;https://www.bilibili.com/opus/725282271224922131&quot;&gt;参考链接1&lt;/a&gt; &lt;a href=&quot;https://blog.csdn.net/oneby1314/article/details/107311743&quot;&gt;参考链接2&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;编写 Java 脚本，读取 MD 文件的内容，并在每个标题之前添加标题序号&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;大致思路：&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;每一级标题都有自己的计数器，由于一级标题不参与编号，从二级标题开始算起，Typora 最多支持六级标题，我们用一个长度为 5 的一维数组代表 2~6 级标题计数器&lt;/li&gt;
+&lt;li&gt;每读取一行，便判断此行是否为标题行，如果是标题行，则为当前标题添加标题序号&lt;/li&gt;
+&lt;li&gt;标题计数器初始默认值为 0 ，每次用的时候便执行 += 1 操作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;代码部分&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public class TitleAutoNumbering {
+
+    public static void main(String[] args) {
+
+        // MD 文件位置
+        String destMdFilePath;
+
+        // 从命令行读取 MD 文件位置，否则使用默认值
+        if (args == null || args.length == 0) {
+            destMdFilePath = &quot;C:\\Users\\Heygo\\Desktop\\Typora + PicGo + Aliyun OSS + CSDN.md&quot;;
+        } else {
+            destMdFilePath = args[0];
+        }
+
+        // 执行标题自动编号
+        doTitleAutoNumbering(destMdFilePath);
+    }
+
+    /**
+     * 执行标题自动编号
+     *
+     * @param destMdFilePath MD 文件路径
+     */
+    private static void doTitleAutoNumbering(String destMdFilePath) {
+
+        // 获取标题自动编号的MD文件内容
+        String mdFileContent = getAutoTitledMdContent(destMdFilePath);
+
+        // 执行保存（覆盖原文件）
+        SaveMdContentToFile(destMdFilePath, mdFileContent);
+
+    }
+
+    /**
+     * 获取标题自动编号的MD文件内容
+     *
+     * @param destMdFilePath MD 文件路径
+     * @return
+     */
+    private static String getAutoTitledMdContent(String destMdFilePath) {
+
+        // 如果不是 MD 文件，滚蛋
+        Boolean isMdFile = destMdFilePath.endsWith(&quot;.md&quot;);
+        if (!isMdFile) {
+            return &quot;&quot;;
+        }
+
+        // 标题编号
+        /*
+        标题编号规则：
+            - 一级标题为文章的题目，不对一级标题编号
+            - 二级、三级、四级标题需要级联编号
+            - 五级、六级标题无需级联编号，只需看上一级标题的脸色，递增即可
+         */
+        Integer[] titleNumber = new Integer[]{0, 0, 0, 0, 0};
+
+        // 存储md文件内容
+        StringBuilder sb = new StringBuilder();
+
+        // 当前行内容
+        String curLine;
+
+        // 装饰者模式：FileReader无法一行一行读取，所以使用BufferedReader装饰FileReader
+        try (
+                FileReader fr = new FileReader(destMdFilePath);
+                BufferedReader br = new BufferedReader(fr);
+        ) {
+
+            // 当前行有内容
+            while ((curLine = br.readLine()) != null) {
+
+                // 判断是否为标题行，如果是标题，是几级标题
+                Integer curTitleLevel = calcTitleLevel(curLine);
+
+                if (curTitleLevel != -1) {
+
+                    // 插入标题序号
+                    curLine = insertTitleNumber(curLine, titleNumber);
+
+                    // 重新计算标题计数器
+                    RecalcTitleCounter(curTitleLevel, titleNumber);
+
+                }
+
+                // 向缓冲区中追加内容
+                sb.append(curLine + &quot;\r\n&quot;);
+
+            }
+
+            // 返回 MD 文件内容
+            return sb.toString();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
+            // 失败返回空字符串
+            return &quot;&quot;;
+        }
+    }
+
+    /**
+     * 计算当前标题等级
+     *
+     * @param curLine 当前行的内容
+     * @return -1 ：非标题行；大于等于 2 的正数：当前行的标题等级
+     */
+    private static Integer calcTitleLevel(String curLine) {
+
+        // 由于一级标题无需编号，所以从二级标题开始判断
+        boolean isTitle = curLine.startsWith(&quot;##&quot;);
+        if (!isTitle) {
+
+            // 返回 -1 表示非标题行
+            return -1;
+        }
+
+        // 现在来看看是几级标题
+        Integer titleLevel = curLine.indexOf(&quot; &quot;);
+
+        return titleLevel;
+
+    }
+
+    /**
+     * 重新计算标题计数器的值
+     *
+     * @param titleLevel  当前行的标题等级
+     * @param titleNumber 标题计数器
+     */
+    private static void RecalcTitleCounter(Integer titleLevel, Integer[] titleNumber) {
+
+        // 二级标题更新时，三级及三级以下的标题序号重置为 0
+        Integer startIndex = titleLevel - 1;
+        for (int i = startIndex; i &amp;lt; titleNumber.length; i++) {
+            titleNumber[i] = 0;
+        }
+
+    }
+
+    /**
+     * 向标题行中插入标题序号
+     *
+     * @param curLine     当前行内容
+     * @param titleNumber 标题计数器
+     * @return
+     */
+    private static String insertTitleNumber(String curLine, Integer[] titleNumber) {
+
+        // 标题等级（以空格分隔的前提是 Typora 开启严格模式）
+        Integer titleLevel = curLine.indexOf(&quot; &quot;);
+
+        // 标题等级部分
+        String titleLevelStr = curLine.substring(0, titleLevel);
+
+        // 标题内容部分
+        String titleContent = curLine.substring(titleLevel + 1);
+
+        // 先去除之前的编号
+        titleContent = RemovePreviousTitleNumber(titleContent);
+
+        // 标题等级递增
+        Integer titleIndex = titleLevel - 2;
+        titleNumber[titleIndex] += 1;
+
+        // 标题序号
+        String titleNumberStr = &quot;&quot;;
+        switch (titleLevel) {
+            case 2:
+                titleNumberStr = titleNumber[0].toString();
+                break;
+            case 3:
+                titleNumberStr = titleNumber[0].toString() + &quot;.&quot; + titleNumber[1];
+                break;
+            case 4:
+                titleNumberStr = titleNumber[0].toString() + &quot;.&quot; + titleNumber[1] + &quot;.&quot; + titleNumber[2];
+                break;
+            case 5:
+                titleNumberStr = titleNumber[3].toString();
+                break;
+            case 6:
+                titleNumberStr = titleNumber[4].toString() + &quot; ) &quot;;
+                break;
+        }
+        titleNumberStr += &quot;、&quot;;
+
+        // 插入标题序号
+        titleContent = titleNumberStr + titleContent;
+
+        System.out.println(&quot;已增加标题序号：&quot; + titleContent);
+
+        // 返回带序号的标题
+        curLine = titleLevelStr + &quot; &quot; + titleContent;
+        return curLine;
+    }
+
+    /**
+     * 去除之前标题的编号
+     * @param titleContent 标题内容
+     * @return 去除标题编号之后的标题内容
+     */
+    private static String RemovePreviousTitleNumber(String titleContent) {
+
+        // 寻找标题中的 、 字符
+        Integer index = titleContent.indexOf(&quot;、&quot;);
+
+        if (index &amp;gt; 0 &amp;amp;&amp;amp; index &amp;lt; 6) {
+
+            // 之前已经进行过标号
+            return titleContent.substring(index + 1);
+
+        } else {
+
+            // 之前未进行过标号，直接返回
+            return titleContent;
+        }
+    }
+
+    /**
+     * 保存MD文件
+     *
+     * @param destMdFilePath MD文件路径
+     * @param mdFileContent  MD文件内容
+     */
+    public static void SaveMdContentToFile(String destMdFilePath, String mdFileContent) {
+
+        // 不保存空文件
+        if (mdFileContent == null || mdFileContent == &quot;&quot;) {
+            return;
+        }
+
+        // 执行保存
+        try (FileWriter fw = new FileWriter(destMdFilePath)) {
+            fw.write(mdFileContent);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1&gt;typora_plugin插件的使用（持续更新）&lt;/h1&gt;
+&lt;h2&gt;（1）安装与启动&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/obgnail/typora_plugin/releases/latest&quot;&gt;下载&lt;/a&gt; 插件源码的压缩包，并解压&lt;/li&gt;
+&lt;li&gt;进入 Typora 安装路径，找到包含 &lt;code&gt;window.html&lt;/code&gt; 的文件夹 A
+&lt;ul&gt;
+&lt;li&gt;正式版 Typora，路径为 &lt;code&gt;./resources/window.html&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;免费版 Typora，路径为 &lt;code&gt;./resources/app/window.html&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;将解压得到的 plugin 文件夹粘贴进文件夹 A 下&lt;/li&gt;
+&lt;li&gt;进入文件夹 &lt;code&gt;A/plugin/bin/&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;Windows 系统：双击运行 &lt;code&gt;install_windows_amd_x64.exe&lt;/code&gt;，如果看到下图，说明安装成功&lt;/li&gt;
+&lt;li&gt;Linux 系统：以管理员运行 &lt;code&gt;install_linux.sh&lt;/code&gt;，如果看到下图，说明安装成功&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;验证：重启 Typora，在正文区域点击鼠标右键，弹出右键菜单栏，如果能看到 &lt;code&gt;常用插件&lt;/code&gt; 栏目，说明一切顺利&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;（2）我的使用理解&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;h3&gt;自动编号：&lt;/h3&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这个插件的自动编号只是在Typora中显示和导出才生效，没有真正的修改编号&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;虽然不用，但是还是在这里备份一下我对这个插件自动编号的修改。能让编号呈现（1）、（2）的样式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;{
+&quot;name&quot;: &quot;Layout::Decimal-H2&quot;,
+&quot;selected&quot;: true,
+&quot;layout&quot;: {
+&quot;content-h1&quot;: &quot;#&quot;,
+&quot;content-h2&quot;: &quot;{c2}. &quot;,
+&quot;content-h3&quot;: &quot;({c3})&quot;,//修改了这里
+&quot;content-h4&quot;: &quot;{c4:di}&quot;,
+&quot;content-h5&quot;: &quot;{c5:ci} &quot;,
+&quot;content-h6&quot;: &quot;&quot;,
+&quot;outline-h1&quot;: &quot;#&quot;,
+&quot;outline-h2&quot;: &quot;{o2}. &quot;,
+&quot;outline-h3&quot;: &quot;({o3} )&quot;,//修改了这里
+&quot;outline-h4&quot;: &quot;{o4:di} &quot;,
+&quot;outline-h5&quot;: &quot;{o5:ci} &quot;,
+&quot;outline-h6&quot;: &quot;&quot;,
+&quot;toc-h1&quot;: &quot;#&quot;,
+&quot;toc-h2&quot;: &quot;{t2}. &quot;,
+&quot;toc-h3&quot;: &quot;({t3}) &quot;,//修改了这里
+&quot;toc-h4&quot;: &quot;{t4:di} &quot;,
+&quot;toc-h5&quot;: &quot;{t5:ci} &quot;,
+&quot;toc-h6&quot;: &quot;&quot;,
+&quot;table&quot;: &quot;Table {t}&quot;,
+&quot;image&quot;: &quot;Image {i}&quot;,
+&quot;fence&quot;: &quot;Fence {f}&quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;h3&gt;思维导图的配置&lt;/h3&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;呈现的颜色效果&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.246612.xyz/content/2025/05/PixPin_2025-05-30_14-19-50.png&quot; alt=&quot;PixPin_2025-05-30_14-19-50&quot; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改配置，&lt;a href=&quot;http://yansedaima.com/yansedaimabiao.html&quot;&gt;参考选择颜色代码&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.246612.xyz/content/2025/05/PixPin_2025-05-30_14-21-58.png&quot; alt=&quot;PixPin_2025-05-30_14-21-58&quot; /&gt;&lt;/p&gt;
+&lt;h1&gt;typora-community-plugin插件的使用（等我使用后再更新）&lt;/h1&gt;
+</content:encoded></item><item><title>域名的购买配置</title><link>https://fuxieyi.github.io/posts/%E5%9F%9F%E5%90%8D%E7%9A%84%E8%B4%AD%E4%B9%B0%E9%85%8D%E7%BD%AE/</link><guid isPermaLink="true">https://fuxieyi.github.io/posts/%E5%9F%9F%E5%90%8D%E7%9A%84%E8%B4%AD%E4%B9%B0%E9%85%8D%E7%BD%AE/</guid><description>关于我对域名的使用分享</description><pubDate>Tue, 13 May 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;如何购买域名&lt;/h2&gt;
+&lt;h3&gt;免费的域名&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;https://www.cloudns.net/&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;付费的域名&lt;/h3&gt;
+&lt;p&gt;1.https://www.spaceship.com/zh/ 这个服务商的.com域名应该是最便宜的,&lt;/p&gt;
+&lt;p&gt;2.&lt;a href=&quot;https://wanwang.aliyun.com/newdomain/1yuan?_v_=47edc66742fe36fc0a839ea5700b8cd5&amp;amp;keyword=xieyifu&quot;&gt;阿里云域名一元起购&lt;/a&gt; 打算后期试试&lt;/p&gt;
+&lt;h2&gt;测试域名状态的网站&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.itdog.cn/&quot;&gt;ITDOG&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;使用CLoudflare托管域名&lt;/h2&gt;
+</content:encoded></item><item><title>配合Cloudflare和Piclist部署自己的图床</title><link>https://fuxieyi.github.io/posts/%E9%85%8D%E5%90%88cloudflare%E5%92%8Cpiclist%E9%83%A8%E7%BD%B2%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%BA%8A/</link><guid isPermaLink="true">https://fuxieyi.github.io/posts/%E9%85%8D%E5%90%88cloudflare%E5%92%8Cpiclist%E9%83%A8%E7%BD%B2%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%BA%8A/</guid><description>搭建一个属于你的免费图床(PicList+Cloudflare R2)</description><pubDate>Mon, 12 May 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;提前准备&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;一个提前注册好的 Cloudflare 账号，并添加一个付费计划,不必担心扣费，可以选择0元免费计划&lt;/li&gt;
+&lt;li&gt;一个提前注册好的域名，可以选便宜一些的,域名后缀无所谓，只是作为图片网址使用如果不想花一年十几块的域名费，也可以去网上找免费的域名使用&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/Kuingsmile/PicList&quot;&gt;Piclist软件&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;(1)创建Cloudflare R2 存储桶&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;R2 实际上是一个对象存储。Cloudflare 提供 10G 的免费存储和每月 1000 万次的免费访问&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;进入&lt;a href=&quot;https://dash.cloudflare.com/&quot;&gt;Cloudflare 仪表盘&lt;/a&gt;，进入 R2 页面，为你的存储桶起一个名字，然后单击创建&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.246612.xyz/content/2025/05/202408281607397.png&quot; alt=&quot;202408281607397&quot; /&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;配置访问链接&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;不要忘记，我们要搭的毕竟是个图床，不是网盘，接下来，我们要让其中的文件能够方便地通过链接从公网直接访问，让它变成真正意义上的图床&lt;/li&gt;
+&lt;li&gt;Cloudflare 提供自己的子域域名，只不过功能受限，速度受限&lt;/li&gt;
+&lt;li&gt;所以建议自定义域访问 &lt;a&gt;域名的购买配置&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;(2)S3 API 配置&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;接下来，我们看看如何通过调用 S3 API 进行上传下载，并通过 PicList 接入该 API 实现一站式、本地化的图床图片管理&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;要使用 S3 API，要获取 访问秘钥 ID（对应 AccessKeyId）、机密访问秘钥（对应 SecretAccessKey），以及终结点 /endpoint（后面用到）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;回到 R2 页面,点击API-管理API令牌,输入令牌名称,指定相关权限&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.246612.xyz/content/2025/05/PixPin_2025-05-29_21-41-06.png&quot; alt=&quot;PixPin_2025-05-29_21-41-06&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;令牌创建成功后，下方即有 S3 API 需要的信息：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.246612.xyz/content/2025/05/202408281710556.png&quot; alt=&quot;202408281710556&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;span style=&quot;text-emphasis:filled red;&quot;&amp;gt;根据 Cloudflare 的安全策略，令牌信息页面一旦关闭，便永远不再展现，如果忘记了相应的信息，只能重新生成新令牌，所以请将令牌信息记录于可信的位置，妥善保管。&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;h2&gt;(3)Piclist图床配置&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;现在，事情来到了最后一步 —— 我们需要一个工具软件来接入我们配置好的 S3 API，方便我们从本地上传和管理图片，而不必每次都打开 cloudflare 面板，而 PicList 就是这方面的不二之选。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;打开 &lt;a href=&quot;https://piclist.cn/&quot;&gt;PicList 官方网站&lt;/a&gt;，下载安装软件&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;载安装软件，打开后，可以看到，其已经内置支持了不少图床,但是…… 好像就是没有我们用的 cloudflare R2？别急，移步左侧的 “插件” 选项,搜索s3&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;lt;span style=&quot;text-emphasis:filled red;&quot;&amp;gt;插件有s3和s3-lls,不知道是是不是BUG,使用两者插件输出图片链接格式不同,对于CF图床生成的链接格式(自定义域名 / 设定的文件路径 / 文件名),s3-lls插件输出才符合&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;来到 “图床” 选项的 “Amazon S3”，新建配置，按要求填入指定的参数&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.246612.xyz/content/2025/05/PixPin_2025-05-29_22-15-44.png&quot; alt=&quot;PixPin_2025-05-29_22-15-44&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;各项配置说明如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;图床配置名：自定义。&lt;/li&gt;
+&lt;li&gt;应用秘钥 ID：对应 AccessKeyId / 访问秘钥 ID。&lt;/li&gt;
+&lt;li&gt;应用秘钥：对应 SecretAccessKey / 机密访问秘钥。&lt;/li&gt;
+&lt;li&gt;桶名：对应你在 Cloudflare 上创建的桶名称。&lt;/li&gt;
+&lt;li&gt;文件路径：定义桶内文件的上传存储路径,在这里我配置的是content/{year}/{month}/{fileName}.{extName},这样其实很方便我后期管理。&lt;/li&gt;
+&lt;li&gt;地区：可以AUTO也可以APAC(亚太地区,可能对访问速度有帮助吧)&lt;/li&gt;
+&lt;li&gt;自定义节点：对应 endpoint / 终结点。&lt;/li&gt;
+&lt;li&gt;自定义域名：对应 Cloudflare 自定义域或公共 R2.dev 存储桶 URL。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;下面详细说明 “文件路径” 选项&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;该设置支持几个有固定含义的 payload 选项（如下所列），这些选项用于规定文件的上传路径和命名规则，而我们需要做的，就是根据需要进行恰当组合。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.246612.xyz/content/2025/05/202408281844639.png&quot; alt=&quot;202408281844639&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;根据上图所列，文件路径可以写成这样：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;{year}/{month}/{fileName}.{extName}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这样一个文件路径代表什么意思呢？举例来说，我在 2024 年 8 月上传了一张名为 “xxx.jpg” 的图片，按照如上的路径设置，它将会存储在如下位置：“桶名称 / 2024/08/”，而它的文件名就是 “xxx.jpg”，即：原文件名 + 原拓展名。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;同理，我也可以换一种写法：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;{year}/{month}/{fileName}/{md5}.{extName}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;同样一张图片，在这样的文件路径下，会被上传到 “桶名称 / 2024/08/xxx/” 中，而图片本身会被重命名成 “该图片对应的 md5 字符串.jpg” 的形式。&lt;/p&gt;
+&lt;h2&gt;(4)Piclist的管理功能(可以直接管理你的云端图床)&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;云存储平台/云服务器和图床平台的管理是PicList新增的功能，在这里你可以：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;新建存储桶&lt;/li&gt;
+&lt;li&gt;新建/重命名和删除文件夹&lt;/li&gt;
+&lt;li&gt;重命名和批量删除文件&lt;/li&gt;
+&lt;li&gt;快速批量复制文件公开链接&lt;/li&gt;
+&lt;li&gt;批量获取私有文件的临时分享链接&lt;/li&gt;
+&lt;li&gt;批量上传和下载各种格式的文件&lt;/li&gt;
+&lt;li&gt;预览图片&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;上面我们用的是Cloudflare的r2对象存储,所以我们就在Piclist配置管理&lt;/li&gt;
+&lt;li&gt;点击管理选择S3兼容云,进行与上面相似的配置填写&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.246612.xyz/content/2025/05/PixPin_2025-05-29_22-32-59.png&quot; alt=&quot;PixPin_2025-05-29_22-32-59&quot; /&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;这样配置完成后，就可以直接在Piclist查看咱们云端的图床啦&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;(5)关于配置的同步备份(使用Github仓库备份)&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.246612.xyz/content/2025/05/PixPin_2025-05-30_13-26-30.png&quot; alt=&quot;PixPin_2025-05-30_13-26-30&quot; /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这里我使用Github自建私有仓库(Piclist_Backup )进行配置文件的保存&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;(6)相关参考链接&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.zbf1009.top/archives/28&quot;&gt;https://www.zbf1009.top/archives/28&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;https://tyxiaoming.xin/2025/01/12/%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/&lt;/p&gt;
+&lt;/blockquote&gt;
+</content:encoded></item><item><title>博客的使用管理(持续更新)</title><link>https://fuxieyi.github.io/posts/%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%BD%BF%E7%94%A8%E7%AE%A1%E7%90%86/</link><guid isPermaLink="true">https://fuxieyi.github.io/posts/%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%BD%BF%E7%94%A8%E7%AE%A1%E7%90%86/</guid><description>我对这个博客是如何使用和管理的</description><pubDate>Sun, 11 May 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;#我的增添修改(持续更新)&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;更改根目录下的 astro.config.mjs,更改站点 url site&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;注意, 若不删除 biome.yaml，在移动端显示会有 bug&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;媒体资源都放在 public 文件夹下&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;build.yml 也可以删除，原因如下：&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;build.yml 中的构建功能已经包含在 astro_auto_deploy.yml 中&lt;/li&gt;
+&lt;li&gt;Node.js 版本问题
+build.yml 使用了 Node.js 22 和 23 版本
+这些版本太新，可能不稳定
+而 astro_auto_deploy.yml 使用的是更稳定的 Node.js 20&lt;/li&gt;
+&lt;li&gt;对于个人博客项目，不需要这么复杂的构建检查
+保留一个部署工作流就足够了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;主页显示内容条数的配置，它在 export const PAGE_SIZE = 8&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;#一些辅助工具(持续更新)&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;icon图标：你需要前往&lt;a href=&quot;https://https//icones.js.org/&quot;&gt;icones.js&lt;/a&gt;去搜索你想要的图标&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;#相关构建指令&lt;/h2&gt;
+&lt;p&gt;下列指令均需要在项目根目录执行：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Command&lt;/th&gt;
+&lt;th&gt;Action&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;pnpm install&lt;/code&gt; 并 &lt;code&gt;pnpm add sharp&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;安装依赖&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;pnpm dev&lt;/code&gt;/&lt;code&gt;npm run dev&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;在 &lt;code&gt;localhost:4321&lt;/code&gt; 启动本地开发服务器&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;pnpm build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;构建网站至 &lt;code&gt;./dist/&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;pnpm preview&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;本地预览已构建的网站&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;pnpm new-post &amp;lt;filename&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;创建新文章&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;pnpm astro ...&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;执行 &lt;code&gt;astro add&lt;/code&gt;, &lt;code&gt;astro check&lt;/code&gt; 等指令&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;pnpm astro --help&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;显示 Astro CLI 帮助&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;#基本信息使用&lt;/h2&gt;
+&lt;h3&gt;1.改写config.ts&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;title：你的博客主标题&lt;/li&gt;
+&lt;li&gt;subtitle：你的博客副标题。可选，在首页会显示为 &quot;主标题 - 副标题&quot;&lt;/li&gt;
+&lt;li&gt;lang：博客显示语言。注释已经列出了一些常用的值，如：en, zh_CN, zh_TW, ja, ko&lt;/li&gt;
+&lt;li&gt;themeColor：hue 值则是你的博客主题色，可以在你的博客右上角的画板图标确定喜欢的颜色再填写&lt;/li&gt;
+&lt;li&gt;banner：src：即 banner 图片，支持 http/https URL&lt;/li&gt;
+&lt;li&gt;favicon：src：即网站图标，支持 http/https URL&lt;/li&gt;
+&lt;li&gt;links：即友情链接，这些链接在导航栏上&lt;/li&gt;
+&lt;li&gt;avatar：即你的头像&lt;/li&gt;
+&lt;li&gt;name：即你的名字&lt;/li&gt;
+&lt;li&gt;bio：即个性签名，会显示在头像和名字下面&lt;/li&gt;
+&lt;li&gt;NavBarConfig 为导航栏设置的超链接。ProfileConfig 为你的用户的超链接&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;2.文章格式 Frontmatter&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;---
+title: My First Blog Post
+published: 2023-09-09
+updated: 2023-09-09
+description: This is the first post of my new Astro blog.
+image: ./cover.jpg
+tags: [Foo, Bar]
+category: Front-end
+draft: false
+lang: zh_CN      # 仅当文章语言与 `config.ts` 中的网站语言不同时需要设置
+---
+&lt;/code&gt;&lt;/pre&gt;
+</content:encoded></item><item><title>我的第一篇博客</title><link>https://fuxieyi.github.io/posts/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</link><guid isPermaLink="true">https://fuxieyi.github.io/posts/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</guid><description>关于建立博客的心理路程</description><pubDate>Sat, 10 May 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;关于建立博客的心理路程...&lt;/h1&gt;
+&lt;p&gt;5.30&lt;/p&gt;
+</content:encoded></item><item><title>关于此博客的构建</title><link>https://fuxieyi.github.io/posts/%E5%85%B3%E4%BA%8E%E6%AD%A4%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%9E%84%E5%BB%BA/</link><guid isPermaLink="true">https://fuxieyi.github.io/posts/%E5%85%B3%E4%BA%8E%E6%AD%A4%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%9E%84%E5%BB%BA/</guid><description>从零开始构建部署的过程(基于Astro框架的博客)</description><pubDate>Sat, 10 May 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;从零开始构建部署的过程(基于Astro框架的博客)&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.246612.xyz/content/2025/05/%E5%85%B3%E4%BA%8E%E6%AD%A4%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%9E%84%E5%BB%BA_1748581849787.svg&quot; alt=&quot;关于此博客的构建_1748581849787&quot; /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;(1)相关环境依赖构建(在 windwos 下的开发调试)&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://git-scm.com/downloads&quot;&gt;下载 Git&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://nodejs.org/en&quot;&gt;Node.js&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过 Node.js 在 windwos 环境下安装 pnpm&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;npm install -g pnpm&lt;/code&gt;(全局安装pnpm)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;默认情况下，npm 和 pnpm 的全局依赖会安装在 C:\Users\你的用户名\AppData\Roaming\npm，我们可以修改到 D 盘。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;npm config set prefix &quot;D:\npm-global&quot;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;验证 npm config get prefix      # 应该返回 D:\npm-global&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;pnpm config set store-dir &quot;D:\.pnpm-store&quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;验证 pnpm config set store-dir &quot;D:.pnpm-store&quot;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;在博客根目录下安装其所需依赖&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;pnpm install&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pnpm add sharp&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;至此，你成功在本地部署此项目&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;(2)部署构建静态网页&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://dash.cloudflare.com/&quot;&gt;CF官网&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;使用Cloudflare的Pages或Workers构建&lt;/li&gt;
+&lt;li&gt;也可以使用github静态网页托管&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;方式一 、Cloudflare(Pages,Workers二选一)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Pages部署&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;计算下的Pages,打开上传到github的博客仓库,选择你要部署的分支&lt;/li&gt;
+&lt;li&gt;填写构建命令和构建输出目录(就是astro输出的静态网页文件)&lt;/li&gt;
+&lt;li&gt;保存并部署即可,最好绑定自己的域名&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;lt;img src=&quot;https://blog.246612.xyz/content/2025/05/PixPin_2025-05-29_15-10-47.png&quot; alt=&quot;PixPin_2025-05-29_15-10-47&quot;  /&amp;gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Workers部署&lt;/strong&gt;(目前没有迁移需求,后续再更新啦)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;(CF官方建议将Pages项目迁移至Workers)&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;img src=&quot;https://blog.246612.xyz/content/2025/05/PixPin_2025-05-29_15-14-10.png&quot; alt=&quot;PixPin_2025-05-29_15-14-10&quot;  /&amp;gt;&lt;/p&gt;
+&lt;h3&gt;方式二、Github静态网页托管(通过Github Action自动部署dist文件)&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在github创建一个主文件MyBlog-Main-astro 和专门存放显示静态页面的仓库***(github账户名).github.io&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;前往&lt;code&gt;Setttings -&amp;gt; Developer Settings -&amp;gt; Personal access tokens&lt;/code&gt;，创建一个token(classic)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.246612.xyz/content/2025/05/createToken1.png&quot; alt=&quot;createToken1&quot; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;token选择永不过期，并勾选 &lt;strong&gt;repo&lt;/strong&gt; 和 &lt;strong&gt;workflow&lt;/strong&gt; 选项&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.246612.xyz/content/2025/05/createToken2.png&quot; alt=&quot;createToken2&quot; /&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;为保证安全，将生成的token，保存在仓库的变量中，前往&lt;code&gt;Settings -&amp;gt; Secrets and variables -&amp;gt; Actions&lt;/code&gt;中设置&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.246612.xyz/content/2025/05/createToken3.png&quot; alt=&quot;createToken3&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.246612.xyz/content/2025/05/setToken1.png&quot; alt=&quot;setToken1&quot; /&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在主文件创建一个自动化部署脚本(主文件输出的dist文件部署到***.github.io)&lt;/li&gt;
+&lt;li&gt;在.github/workflows/下新建一个astro_auto_deploy.yaml文件，将以下内容复制进去，想具体了解更多，可查看【&lt;a href=&quot;https://docs.github.com/zh/actions&quot;&gt;Github Action文档&lt;/a&gt;】&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;name: astro_auto_deploy
+
+# 代码提交到main分支时触发github action
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: &apos;20&apos;
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: false
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build site
+        run: pnpm build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          PERSONAL_TOKEN: ${{ secrets.TOKEN }}
+          EXTERNAL_REPOSITORY: 你的github名/你的仓库名
+          PUBLISH_BRANCH: main
+          PUBLISH_DIR: ./dist
+          force_orphan: true 
+          commit_message: auto deploy
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;在主文件修改&lt;code&gt;.gitignore&lt;/code&gt;，来避免提交不必要的文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;# build output
+dist/
+
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
+.DS_Store
+
+.vercel
+
+package-lock.json
+bun.lockb
+yarn.lock
+
+.~* //不提交~形式的备份文件
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;配合vscode的git将文件上传到仓库，上传成功后会触发Github Action，来自动部署你的静态页面&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;(3)创建属于自己的图床(Cloudflare R2 + Piclist)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://fuxieyi.top/posts/%E9%83%A8%E7%BD%B2%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%B9%B6%E7%94%A8chatbox%E8%BF%9E%E6%8E%A5%E5%88%B0%E8%BF%9C%E7%A8%8Bollama%E6%9C%8D%E5%8A%A1/&quot;&gt;配合Cloudflare和Piclist部署自己的图床&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;(4)选择合适的Markdown编辑器&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://fuxieyi.top/posts/%E9%83%A8%E7%BD%B2%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%B9%B6%E7%94%A8chatbox%E8%BF%9E%E6%8E%A5%E5%88%B0%E8%BF%9C%E7%A8%8Bollama%E6%9C%8D%E5%8A%A1/&quot;&gt;Markdown编辑器之Typora&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;(5)相关参考学习链接&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/saicaca/fuwari&quot;&gt;fuwari模板地址,可以一起Fork交流新功能&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://letere-gzj.github.io/hugo-stack/&quot;&gt;使用Hugo框架的大佬,网页的粒子动画效果也是参考他的~&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://afo.im/&quot;&gt;带我入坑此模板的大佬~&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+</content:encoded></item></channel></rss>
